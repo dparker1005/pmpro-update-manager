@@ -726,7 +726,7 @@ class PMProUM_AddOns {
 	 */
 	private function get_upgrader_skin() {
 		// Use the core automatic skin to avoid direct output.
-		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader-skins.php';
+		require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
 		$args = array(
 			'skip_header' => true,
 			'url'         => admin_url( 'plugins.php' ),
