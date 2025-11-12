@@ -3,7 +3,7 @@ Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, update manager, update, upgrade, Add Ons, plugins
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,6 +27,9 @@ Manage downloads and updates for all official Paid Memberships Pro Add Ons, them
 View full documentation at: https://www.paidmembershipspro.com/add-ons/update-manager/
 
 == Changelog ==
+= 1.0.1 - 2025-11-12 =
+* BUG FIX: Fixed a deprecation warning when installing Add Ons from the Membership > Add Ons screen. #16 (@dparker1005)
+
 = 1.0 - 2025-10-20 =
 * ENHANCEMENT: Added class `PMProUM_AddOns` based off the core `PMPro_AddOns` class to better manage Add On downloads, activations, and updates. #13 (@dparker1005)
 
