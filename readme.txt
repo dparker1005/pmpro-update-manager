@@ -29,6 +29,7 @@ View full documentation at: https://www.paidmembershipspro.com/add-ons/update-ma
 == Changelog ==
 = TBD =
 * BUG FIX: Fixed PMPro core and Add Ons never auto-updating in the background because the update hooks only registered on `admin_init`, which does not fire during WP-Cron where automatic updates run. (@dalemugford)
+* BUG FIX: Set `new_version` on `no_update` entries so up-to-date Add Ons no longer trigger an undefined-property warning in WP-CLI and other consumers of the update transient. (@dalemugford)
 
 = 1.0.1 - 2025-11-12 =
 * BUG FIX: Fixed a deprecation warning when installing Add Ons from the Membership > Add Ons screen. #16 (@dparker1005)

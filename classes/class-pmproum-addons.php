@@ -382,7 +382,8 @@ class PMProUM_AddOns {
 					$value->response[ $plugin_file ]->icons = array( 'default' => esc_url( $icon ) );
 				}
 			} else {
-				$value->no_update[ $plugin_file ] = $this->get_plugin_API_object_from_addon( $addon );
+				$value->no_update[ $plugin_file ]              = $this->get_plugin_API_object_from_addon( $addon );
+				$value->no_update[ $plugin_file ]->new_version = $addon['Version'];
 			}
 		}
 
