@@ -27,6 +27,9 @@ Manage downloads and updates for all official Paid Memberships Pro Add Ons, them
 View full documentation at: https://www.paidmembershipspro.com/add-ons/update-manager/
 
 == Changelog ==
+= TBD =
+* BUG FIX: Fixed PMPro core and Add Ons never auto-updating in the background because the update hooks only registered on `admin_init`, which does not fire during WP-Cron where automatic updates run. (@dalemugford)
+
 = 1.0.1 - 2025-11-12 =
 * BUG FIX: Fixed a deprecation warning when installing Add Ons from the Membership > Add Ons screen. #16 (@dparker1005)
 
