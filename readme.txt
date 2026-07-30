@@ -2,8 +2,8 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, update manager, update, upgrade, Add Ons, plugins
 Requires at least: 5.4
-Tested up to: 6.8
-Stable tag: 1.0.1
+Tested up to: 7.0
+Stable tag: 1.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,9 +27,11 @@ Manage downloads and updates for all official Paid Memberships Pro Add Ons, them
 View full documentation at: https://www.paidmembershipspro.com/add-ons/update-manager/
 
 == Changelog ==
-= TBD =
-* BUG FIX: Fixed PMPro core and Add Ons never auto-updating in the background because the update hooks only registered on `admin_init`, which does not fire during WP-Cron where automatic updates run. (@dalemugford)
-* BUG FIX: Set `new_version` on `no_update` entries so up-to-date Add Ons no longer trigger an undefined-property warning in WP-CLI and other consumers of the update transient. (@dalemugford)
+= 1.0.2 - 2026-07-30 =
+* BUG FIX: Fixed PMPro core and Add Ons never auto-updating in the background because the update hooks only registered on `admin_init`, which does not fire during WP-Cron where automatic updates run. #18 (@dalemugford)
+* BUG FIX: Fixed a potential fatal error when the Add On update check runs outside of the WordPress admin, such as during WP-Cron. #18 (@dparker1005)
+* BUG FIX: Fixed a fatal error when the PMPro License Server could not be reached while Paid Memberships Pro was not active. #18 (@dparker1005)
+* BUG FIX: Set `new_version` on `no_update` entries so up-to-date Add Ons no longer trigger an undefined-property warning in WP-CLI and other consumers of the update transient. #18 (@dalemugford)
 
 = 1.0.1 - 2025-11-12 =
 * BUG FIX: Fixed a deprecation warning when installing Add Ons from the Membership > Add Ons screen. #16 (@dparker1005)
