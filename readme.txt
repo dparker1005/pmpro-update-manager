@@ -2,8 +2,8 @@
 Contributors: strangerstudios
 Tags: paid memberships pro, pmpro, update manager, update, upgrade, Add Ons, plugins
 Requires at least: 5.4
-Tested up to: 7.0
-Stable tag: 1.0.2
+Tested up to: 7.1
+Stable tag: 1.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,6 +27,9 @@ Manage downloads and updates for all official Paid Memberships Pro Add Ons, them
 View full documentation at: https://www.paidmembershipspro.com/add-ons/update-manager/
 
 == Changelog ==
+= 1.0.3 - 2026-08-20 =
+* BUG FIX: Fixed a fatal "Cannot redeclare pmpro_setMessage()" error when activating Paid Memberships Pro while the Update Manager was active. #19 (@dparker1005)
+
 = 1.0.2 - 2026-07-30 =
 * BUG FIX: Fixed PMPro core and Add Ons never auto-updating in the background because the update hooks only registered on `admin_init`, which does not fire during WP-Cron where automatic updates run. #18 (@dalemugford)
 * BUG FIX: Fixed a potential fatal error when the Add On update check runs outside of the WordPress admin, such as during WP-Cron. #18 (@dparker1005)
