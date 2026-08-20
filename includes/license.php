@@ -62,18 +62,3 @@ if ( ! function_exists( 'pmpro_license_isValid' ) ) {
         return false;
     }
 }
-
-if ( ! function_exists( 'pmpro_setMessage' ) ) {
-    /**
-     * Queue a message for display in the admin.
-     * This is a no-op here. If PMPro were active, the function
-     * there would be used instead and really set the message.
-     * PMProUM_AddOns::get_remote_addons() calls this when the
-     * License Server cannot be reached, and that code now runs in
-     * all contexts, including WP-Cron, where calling an undefined
-     * function would be fatal. Nothing in this Add On displays
-     * these messages, so there is nothing to store.
-     */
-    function pmpro_setMessage( $message, $type, $force = false ) {
-    }
-}
