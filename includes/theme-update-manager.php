@@ -94,7 +94,7 @@ function pmproum_update_themes_filter( $value ) {
 						'theme' => $theme_info['Slug'],
 						'new_version' => $theme_info['Version'],
 						'url' => $theme_info['ThemeURI'],
-						'package' => $theme_info['Download']
+						'package' => ! empty( $theme_info['Download'] ) ? set_url_scheme( $theme_info['Download'], 'https' ) : ''
 					);
 				}
 			}
