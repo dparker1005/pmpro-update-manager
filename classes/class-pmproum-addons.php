@@ -409,7 +409,7 @@ class PMProUM_AddOns {
 		$addons           = $this->addons;
 		$addons_timestamp = $this->addons_timestamp;
 		// Check if forcing a pull from the server
-		$force_check = ! empty( $_REQUEST['force-check'] ) || $force_check;
+		$force_check = ! empty( $_REQUEST['force-check'] ) || $force_check; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only forces a refresh of the cached Add On list from the license server.
 
 		// if no addons locally, we need to hit the server
 		if ( empty( $addons ) || $force_check || current_time( 'timestamp' ) > $addons_timestamp + 86400 ) {
@@ -997,9 +997,9 @@ class PMProUM_AddOns {
 		}
 
 		// updating one or more plugins via Dashboard -> Upgrade
-		if ( basename( sanitize_text_field( $_SERVER['SCRIPT_NAME'] ) ) == 'update.php' && ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'update-selected' && ! empty( $_REQUEST['plugins'] ) ) {
+		if ( isset( $_SERVER['SCRIPT_NAME'] ) && basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) == 'update.php' && ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'update-selected' && ! empty( $_GET['plugins'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check; WordPress core verifies the nonce for the update request itself.
 			// figure out which plugins we are updating
-			$plugins = explode( ',', stripslashes( sanitize_text_field( $_GET['plugins'] ) ) );
+			$plugins = explode( ',', sanitize_text_field( wp_unslash( $_GET['plugins'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check; WordPress core verifies the nonce for the update request itself.
 			$plugins = array_map( 'urldecode', $plugins );
 
 			// look for addons
@@ -1047,9 +1047,9 @@ class PMProUM_AddOns {
 		}
 
 		// upgrading just one or plugin via an update.php link
-		if ( basename( sanitize_text_field( $_SERVER['SCRIPT_NAME'] ) ) == 'update.php' && ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'upgrade-plugin' && ! empty( $_REQUEST['plugin'] ) ) {
+		if ( isset( $_SERVER['SCRIPT_NAME'] ) && basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) == 'update.php' && ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'upgrade-plugin' && ! empty( $_REQUEST['plugin'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check; WordPress core verifies the nonce for the update request itself.
 			// figure out which plugin we are updating
-			$plugin = urldecode( trim( sanitize_text_field( $_REQUEST['plugin'] ) ) );
+			$plugin = urldecode( trim( sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check; WordPress core verifies the nonce for the update request itself.
 
 			$slug  = str_replace( '.php', '', basename( $plugin ) );
 			$addon = $this->get_addon_by_slug( $slug );
@@ -1078,9 +1078,9 @@ class PMProUM_AddOns {
 		}
 
 		// updating via AJAX on the plugins page
-		if ( basename( sanitize_text_field( $_SERVER['SCRIPT_NAME'] ) ) == 'admin-ajax.php' && ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'update-plugin' && ! empty( $_REQUEST['plugin'] ) ) {
+		if ( isset( $_SERVER['SCRIPT_NAME'] ) && basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) == 'admin-ajax.php' && ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'update-plugin' && ! empty( $_REQUEST['plugin'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check; WordPress core verifies the nonce for the update request itself.
 			// figure out which plugin we are updating
-			$plugin = urldecode( trim( sanitize_text_field( $_REQUEST['plugin'] ) ) );
+			$plugin = urldecode( trim( sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check; WordPress core verifies the nonce for the update request itself.
 
 			$slug  = str_replace( '.php', '', basename( $plugin ) );
 			$addon = $this->get_addon_by_slug( $slug );

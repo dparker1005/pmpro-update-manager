@@ -20,6 +20,10 @@
 	define('PMPRO_LICENSE_NAG', false);	//consider purchasing a license at https://www.paidmembershipspro.com/pricing/
 */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /*
 	Constants
 */

@@ -1,6 +1,10 @@
 <?php
 // This file is to add support for updating our themes in the event they are deactivated.
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Setup themes api filters
  * @since 0.2
@@ -20,7 +24,7 @@ function pmproum_get_themes() {
 	$update_info_timestamp = get_option( 'pmproum_theme_update_info_timestamp', 0 );
 
 	// Query the server if we do not have the local $update_info or we force checking for an update.
-	if ( empty( $update_info ) || ! empty( $_REQUEST['force-check'] ) || current_time('timestamp') > $update_info_timestamp + 86400 ) {
+	if ( empty( $update_info ) || ! empty( $_REQUEST['force-check'] ) || current_time('timestamp') > $update_info_timestamp + 86400 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Only forces a refresh of the cached theme list from the license server.
 		/**
 		 * Filter to change the timeout for this wp_remote_get() request for updates.
 		 * @since 0.2

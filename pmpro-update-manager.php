@@ -11,6 +11,10 @@
  * License: GPL-3.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 define( 'PMPROUM_BASE_FILE', __FILE__ );
 define( 'PMPROUM_BASENAME', plugin_basename( __FILE__ ) );
 define( 'PMPROUM_DIR', dirname( __FILE__ ) );
@@ -60,8 +64,9 @@ function pmproum_check_for_translations() {
 	}
 
 	// Only run this check when we're in the PMPro Page or plugins/update page to save some resources.
-	$is_pmpro_admin = ! empty( $_REQUEST['page'] ) && strpos( $_REQUEST['page'], 'pmpro' ) !== false;
-	$is_update_or_plugins_page = strpos( $_SERVER['REQUEST_URI'], 'update-core.php' ) !== false || strpos( $_SERVER['REQUEST_URI'], 'plugins.php' ) !== false;
+	$is_pmpro_admin = ! empty( $_REQUEST['page'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ), 'pmpro' ) !== false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check to decide whether to look for translation updates.
+	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+	$is_update_or_plugins_page = strpos( $request_uri, 'update-core.php' ) !== false || strpos( $request_uri, 'plugins.php' ) !== false;
 	if ( ! $is_pmpro_admin && ! $is_update_or_plugins_page ) {
 		return;
 	}
