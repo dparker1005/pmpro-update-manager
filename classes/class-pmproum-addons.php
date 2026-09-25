@@ -250,14 +250,14 @@ class PMProUM_AddOns {
 	 * and is no longer hooked to http_request_args.
 	 *
 	 * @since 1.8.5
-	 * @deprecated TBD
+	 * @deprecated 1.0.4
 	 *
 	 * @param array  $args  Array of request args.
 	 * @param string $url  The URL to be pinged.
 	 * @return array $args Unchanged array of request args.
 	 */
 	public function http_request_args_for_addons( $args, $url ) {
-		_deprecated_function( __METHOD__, 'TBD' );
+		_deprecated_function( __METHOD__, '1.0.4' );
 
 		return $args;
 	}
